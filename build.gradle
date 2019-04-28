@@ -30,4 +30,5 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.21.0'
     testCompile group: 'org.springframework', name: 'spring-test'
     testCompile group: 'org.springframework.security', name: 'spring-security-test'
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 }
