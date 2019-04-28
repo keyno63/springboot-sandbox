@@ -31,9 +31,4 @@ public class MessageServiceTest {
         assertThat(actual, is("Hello!!"));
 
     }
-    @Test
-    public void hoge() {
-        return;
-    }
-
 }

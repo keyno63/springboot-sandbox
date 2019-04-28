@@ -20,6 +20,7 @@ import java.util.Map;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -102,9 +103,11 @@ public class EchoControllerTest {
     @Test
     public void POSTテストwoクロスサイトリクエストフォージェリー() throws Exception {
         mockMvcSecurity.perform(post("/echo/post").with(csrf()))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(log());
         mockMvcSecurity.perform(post("/echo/post"))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isForbidden())
+                .andDo(log());
     }
 
 }
