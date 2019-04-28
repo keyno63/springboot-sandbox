@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,6 +37,14 @@ public class EchoController {
         return "json/sample.json";
     }
 
+    @RequestMapping(value = "easy", method = RequestMethod.GET)
+    public static Map<String, String> easy() {
+        Map<String, String> map = new HashMap<>();
+        map.put("version", "1");
+        map.put("user", "user1");
+        return map;
+    }
+
     @RequestMapping("json_re")
     public static ResponseEntity<ResponseTest<Map>> jsonRe() {
         List<Map> list = new ArrayList<>();
@@ -59,6 +68,16 @@ public class EchoController {
         ResponseTest<Map> json = new ResponseTest<>();
         json.setData(list);
         return new ResponseEntity<ResponseTest<Map>>(json, HttpStatus.OK);
+    }
+
+    @PostMapping("post")
+    @ResponseBody
+    public static Map<String, Object> post() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("version", 1);
+        map.put("value", "get");
+        map.put("request", "put");
+        return map;
     }
 
 }

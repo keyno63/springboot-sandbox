@@ -5,7 +5,7 @@ import java.util.List;
 public class ResponseTest<T> {
     private List<T> param;
 
-    public List<T> getData() {
+    public List<T> getParam() {
         return param;
     }
 
