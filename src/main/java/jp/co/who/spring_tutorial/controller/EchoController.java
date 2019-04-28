@@ -38,6 +38,7 @@ public class EchoController {
     }
 
     @RequestMapping(value = "easy", method = RequestMethod.GET)
+    @ResponseBody
     public static Map<String, String> easy() {
         Map<String, String> map = new HashMap<>();
         map.put("version", "1");

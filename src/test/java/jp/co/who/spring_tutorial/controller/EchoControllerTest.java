@@ -5,21 +5,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextHierarchy(@ContextConfiguration(classes = SecurityConfig.class))
@@ -40,6 +41,56 @@ public class EchoControllerTest {
                 .standaloneSetup(new EchoController())
                 .apply(SecurityMockMvcConfigurers.springSecurity(springSecurityFilterChain))
                 .build();
+    }
+
+    @Test
+    public void ルートディレクトリの遷移() throws Exception {
+        mockMvc.perform(get("/echo"))
+                .andExpect(status().isOk())
+                .andExpect(forwardedUrl("echo/input"));
+    }
+
+    @Test
+    public void フォワードURL() throws Exception {
+        mockMvc.perform(get("/echo/echo_forward"))
+                .andExpect(status().isOk())
+                .andExpect(forwardedUrl("/echo"));
+    }
+
+    @Test
+    public void Jsonテスト() throws Exception {
+        mockMvc.perform(get("/echo/json"))
+                .andExpect(status().isOk())
+                .andExpect(content().json(""))
+                .andExpect(forwardedUrl("json/sample.json"));
+    }
+
+    @Test
+    public void easyのURLテスト() throws Exception {
+        final String easyContent =
+                String.format("{\"%s\":\"%s\",\"%s\":\"%s\"}", "version", "1", "user", "user1");
+        mockMvc.perform(get("/echo/easy"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(easyContent));
+    }
+
+    @Test
+    public void json_reのテスト() throws Exception {
+        // TODO: json ファイルの読み込みで表現すべき
+        final String json =
+                "{" +
+                        "\"param\":[" +
+                        "{" +
+                        "\"path\":\"json_re\"}," +
+                        "{\"sample\":\"data\"}," +
+                        "{\"data\":" +
+                          "{\"source\":\"json\"," +
+                          "\"version\":1," +
+                          "\"queue\":false" +
+        "}}]}";
+        mockMvc.perform(get("/echo/json_re"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(json));
     }
 
     @Test

@@ -6,11 +6,9 @@ public class ApiError implements Serializable {
     private static final int id = 1;
     private String message;
 
-    /*
     public int getId() {
         return this.id;
     }
-    */
     public void setMessage(String message) {
         this.message = message;
     }
