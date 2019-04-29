@@ -12,7 +12,12 @@ th:object="${echoForm}" method="POST">
     <div>
         <input type="text" name="text" th:field="*{text}"><br />
         <span th:if="${#fields.hasErrors('text')}"
-              th:errors="*{text}">text のエラーメッセージ</span>
+              th:errors="*{errText}">text のエラーメッセージ</span>
+    </div>
+    <div>
+        <input type="radio" name="bool" th:field="*{bool}" value="true">
+        <input type="radio" name="bool" th:field="*{bool}" value="false">
+        <br />
     </div>
     <div>
         <button type="submit">送信</button>
