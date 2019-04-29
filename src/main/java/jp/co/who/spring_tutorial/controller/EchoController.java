@@ -27,6 +27,11 @@ public class EchoController {
         return "echo/input";
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public static String viewOutput(EchoForm form) {
+        return "echo/output";
+    }
+
     @RequestMapping(value = "echo_forward", method = RequestMethod.GET)
     public static String forward() {
         return "forward:/echo";

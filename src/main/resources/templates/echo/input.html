@@ -1,10 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Title</title>
+    <title>Thymeleaf Input</title>
 </head>
 <body>
-<p>echo template</p>
+<h2>入力画面</h2>
+<form action="./output.html" th:action="@{/echo}"
+th:object="${echoForm}" method="POST">
+    <div>テキストを入力してください :</div>
+    <div>
+        <input type="text" name="text" th:field="*{text}"><br />
+        <span th:if="${#fields.hasErrors('text')}"
+              th:errors="*{text}">text のエラーメッセージ</span>
+    </div>
+    <div>
+        <button type="submit">送信</button>
+    </div>
+</form>
 </body>
 </html>
