@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/param")
+@RequestMapping("/api/param")
 public class ParamController {
 
     @GetMapping
