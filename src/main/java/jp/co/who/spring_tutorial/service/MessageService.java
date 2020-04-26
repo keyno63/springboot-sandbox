@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.repository;
+package jp.co.who.spring_tutorial.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
