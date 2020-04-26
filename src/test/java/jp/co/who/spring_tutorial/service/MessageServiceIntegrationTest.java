@@ -1,10 +1,9 @@
-package jp.co.who.spring_tutorial.repository;
+package jp.co.who.spring_tutorial.service;
 
 import jp.co.who.spring_tutorial.config.MessageConfig;
-import jp.co.who.spring_tutorial.service.MessageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,7 +14,7 @@ import static org.junit.Assert.assertThat;
 @ContextConfiguration(classes = MessageConfig.class)
 public class MessageServiceIntegrationTest {
 
-    @Autowired
+    @InjectMocks
     MessageService service;
 
     //@Test

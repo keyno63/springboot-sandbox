@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.repository;
+package jp.co.who.spring_tutorial.service;
 
 import jp.co.who.spring_tutorial.service.MessageService;
 import org.junit.Test;
