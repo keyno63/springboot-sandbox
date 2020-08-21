@@ -23,9 +23,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // db
     compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'org.postgresql:postgresql'
     compile 'com.h2database:h2:1.4.+';
+
+    // aws s3
+    compile 'com.amazonaws:aws-java-sdk-s3:1.11.846'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
