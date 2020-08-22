@@ -15,8 +15,6 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static javax.swing.UIManager.put;
-
 @ControllerAdvice
 public class EchoErrorController extends ResponseEntityExceptionHandler {
 
