@@ -9,4 +9,9 @@ public class SampleImple implements SampleInterface {
     public boolean getTrue() {
         return true;
     }
+
+    @Override
+    public boolean getFalse() {
+        return false;
+    }
 }
