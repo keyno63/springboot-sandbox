@@ -1,10 +1,8 @@
 package jp.co.who.spring_tutorial.config.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 @ConfigurationProperties("app.aws.s3")
-@Component
 public class S3Property {
 
     private String bucket;
