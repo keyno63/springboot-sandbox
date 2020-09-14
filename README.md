@@ -17,3 +17,12 @@ CLI からの実行は gradle wrapper から実行.
 ```
 
 IDE(Intellij など)の場合は実行タスクから起動してください.  
+
+## 実装選択の意図  
+
+後から見返す用
+
+### Java Properties について
+
+`@ConfigurationPropertiesScan` を使う.  
+`@SpringApplication` をつける class につけ、設定 class を読み込むようにする.  
