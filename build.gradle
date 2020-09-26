@@ -30,7 +30,7 @@ dependencies {
     compile 'com.h2database:h2:1.4.+';
 
     // aws s3
-    compile 'com.amazonaws:aws-java-sdk-s3:1.11.846'
+    compile 'com.amazonaws:aws-java-sdk-s3:1.11.869'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
