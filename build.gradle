@@ -32,6 +32,7 @@ dependencies {
     // aws s3
     compile 'com.amazonaws:aws-java-sdk-s3:1.11.869'
 
+    // lombock
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
