@@ -30,5 +30,4 @@ public class GithubClient {
     public void print() {
         System.out.println(resource);
     }
-
 }
