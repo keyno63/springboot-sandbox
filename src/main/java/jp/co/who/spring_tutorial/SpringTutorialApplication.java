@@ -9,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 public class SpringTutorialApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringTutorialApplication.class, args);
+		SpringApplication.run(SpringTutorialApplication.class, args)
 	}
-
 }
