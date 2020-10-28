@@ -22,13 +22,13 @@ public class HeaderControllerTest {
     }
 
     @Test
-    public void getCookieEndpoint() {
+    public void getCookieEndpoint() throws Exception {
         mockMvc.perform(get("/header/cookie"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getUserAgentEndpoint() {
+    public void getUserAgentEndpoint() throws Exception {
         mockMvc.perform(get("/header/userAgent"))
                 .andExpect(status().isOk());
     }
