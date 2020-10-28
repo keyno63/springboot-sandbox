@@ -27,7 +27,7 @@ public class HeaderController {
     }
 
     private static class HeaderValues {
-        private static String USER_AGENT = "User-Agent";
-        private static String COOKIE = "Cookie";
+        private static final String USER_AGENT = "User-Agent";
+        private static final String COOKIE = "Cookie";
     }
 }
