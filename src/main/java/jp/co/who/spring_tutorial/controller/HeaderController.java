@@ -25,8 +25,15 @@ public class HeaderController {
         return value;
     }
 
+    @GetMapping("/contentType")
+    @ResponseBody
+    public String contentType(@RequestHeader(HeaderValues.CONTENT_TYPE) String value) {
+        return value;
+    }
+
     private static class HeaderValues {
         private static final String USER_AGENT = "User-Agent";
         private static final String COOKIE = "Cookie";
+        private static final String CONTENT_TYPE = "Content-Type";
     }
 }
