@@ -38,6 +38,7 @@ public class EchoErrorController extends ResponseEntityExceptionHandler {
         ApiError a = new ApiError();
         String message = resolveMessage(e, defaultMessage);
         a.setMessage(message);
+        a.setException(e.getClass().toString());
         return a;
     }
 

@@ -15,6 +15,7 @@ public class EchoErrorPageController {
     @RequestMapping("/error_")
     public ApiError handleError(HttpServletRequest req) {
 
+        String exception = "";
         String message;
         Exception e = (Exception) req.getAttribute(
                 RequestDispatcher.ERROR_EXCEPTION
@@ -22,9 +23,10 @@ public class EchoErrorPageController {
         Integer statusCode = (Integer) req.getAttribute(
                 RequestDispatcher.ERROR_STATUS_CODE
         );
-        if (e != null)
+        if (e != null) {
             message = e.getMessage();
-        else {
+            exception = e.getCause().toString();
+        } else {
             if (Arrays.asList(HttpStatus.values()).stream()
                     .anyMatch(st -> st.value() == statusCode))
                 message = e.getMessage();
@@ -33,6 +35,7 @@ public class EchoErrorPageController {
         }
         ApiError ae = new ApiError();
         ae.setMessage(message);
+        ae.setException(exception);
         return ae;
     }
 }

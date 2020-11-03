@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Objects;
+
 /**
  * Header を制御する処理をまとめた Controller
  */
@@ -31,9 +33,19 @@ public class HeaderController {
         return value;
     }
 
+    @GetMapping("/original")
+    @ResponseBody
+    public String original(@RequestHeader(HeaderValues.ORIGINAL) String value) {
+        if (Objects.isNull(value)) {
+            return "nothing header";
+        }
+        return value;
+    }
+
     private static class HeaderValues {
         private static final String USER_AGENT = "User-Agent";
         private static final String COOKIE = "Cookie";
         private static final String CONTENT_TYPE = "Content-Type";
+        private static final String ORIGINAL = "Original";
     }
 }
