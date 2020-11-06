@@ -23,6 +23,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-webflux'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
     // db
@@ -41,4 +42,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // log
+    implementation "ch.qos.logback:logback-classic:1.2.3"
 }

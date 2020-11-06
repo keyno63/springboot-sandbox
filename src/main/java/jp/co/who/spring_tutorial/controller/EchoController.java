@@ -1,24 +1,34 @@
 package jp.co.who.spring_tutorial.controller;
 
+import jp.co.who.spring_tutorial.dto.JsonDataTest;
 import jp.co.who.spring_tutorial.dto.ResponseTest;
 import jp.co.who.spring_tutorial.form.EchoForm;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import static org.springframework.http.HttpHeaders.ACCEPT;
+import static org.springframework.http.MediaType.*;
+
+//@Slf4j
 @Controller
 @RequestMapping("/echo")
 public class EchoController {
+
+    private final WebClient wc;
+
+    public EchoController(WebClient wc) {
+        this.wc = wc;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public static String viewInput(Model model) {
@@ -86,4 +96,40 @@ public class EchoController {
         return map;
     }
 
+    /**
+     * リクエストの確認用
+     */
+    @PostMapping("test2")
+    @ResponseBody
+    public JsonDataTest test(@Validated JsonDataTest data) {
+        Logger logger = LoggerFactory.getLogger(EchoController.class);
+        logger.info("xxxxx: " + data.toString());
+        return data;
+    }
+
+    @PostMapping("test3")
+    @ResponseBody
+    public JsonDataTest test(String data) {
+        Logger logger = LoggerFactory.getLogger(EchoController.class);
+        logger.info("xxxxx: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
+        JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("z", "kome");
+        JsonDataTest jst = new JsonDataTest("ret", List.of(c));
+        return jst;
+    }
+
+    @GetMapping("test")
+    @ResponseBody
+    public JsonDataTest getTest() {
+        JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("y", "ame");
+        JsonDataTest jst = new JsonDataTest("x", List.of(c));
+        JsonDataTest res = wc.post()
+                .uri("http://localhost:8080/echo/test3")
+                .bodyValue(jst)
+                //.header(ACCEPT, APPLICATION_JSON_VALUE)
+                .header(ACCEPT, TEXT_PLAIN_VALUE)
+                .retrieve()
+                .bodyToMono(JsonDataTest.class)
+                .block();
+        return res;
+    }
 }
