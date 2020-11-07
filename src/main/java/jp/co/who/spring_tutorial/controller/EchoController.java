@@ -111,7 +111,7 @@ public class EchoController {
     @ResponseBody
     public JsonDataTest test(String data) {
         Logger logger = LoggerFactory.getLogger(EchoController.class);
-        logger.info("xxxxx: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
+        logger.info("data: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
         JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("z", "kome");
         JsonDataTest jst = new JsonDataTest("ret", List.of(c));
         return jst;
