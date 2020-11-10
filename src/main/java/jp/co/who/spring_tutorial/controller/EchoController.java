@@ -7,16 +7,23 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 import static org.springframework.http.HttpHeaders.ACCEPT;
+import static org.springframework.http.HttpHeaders.USER_AGENT;
 import static org.springframework.http.MediaType.*;
 
 //@Slf4j
@@ -109,9 +116,15 @@ public class EchoController {
 
     @PostMapping("test3")
     @ResponseBody
-    public JsonDataTest test(String data) {
+    public JsonDataTest test(@RequestBody JsonDataTest data, @RequestHeader(name = "User-Agent", required = false) String ua,  HttpServletRequest request) {
         Logger logger = LoggerFactory.getLogger(EchoController.class);
+        logger.info("UA header: " + Optional.ofNullable(ua).map(Objects::toString).orElse("null"));
         logger.info("data: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
+        Cookie[] cookies = request.getCookies();
+        for (var c: cookies) {
+            String message = String.format("cookie. name: %s, value: %s.", c.getName(), c.getValue());
+            logger.info(message);
+        }
         JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("z", "kome");
         JsonDataTest jst = new JsonDataTest("ret", List.of(c));
         return jst;
@@ -122,14 +135,38 @@ public class EchoController {
     public JsonDataTest getTest() {
         JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("y", "ame");
         JsonDataTest jst = new JsonDataTest("x", List.of(c));
+        //Mono<JsonDataTest> mjst = Mono.
         JsonDataTest res = wc.post()
                 .uri("http://localhost:8080/echo/test3")
+                .contentType(APPLICATION_JSON)
+                //.cookie("cookie_name", "cookie_value")
+                .cookies(rCookies -> setCookies(rCookies))
                 .bodyValue(jst)
                 //.header(ACCEPT, APPLICATION_JSON_VALUE)
-                .header(ACCEPT, TEXT_PLAIN_VALUE)
+                //.header(ACCEPT, TEXT_PLAIN_VALUE)
+                .accept(APPLICATION_JSON)
+                .header(USER_AGENT)
                 .retrieve()
                 .bodyToMono(JsonDataTest.class)
                 .block();
+        var hoge = wc.post()
+                .uri("http://localhost:8080/echo/test3")
+                .contentType(APPLICATION_JSON)
+                .cookie("cookie_name", "cookie_value")
+                .bodyValue(jst)
+                //.header(ACCEPT, APPLICATION_JSON_VALUE)
+                //.header(ACCEPT, TEXT_PLAIN_VALUE)
+                .accept(APPLICATION_JSON)
+                .header(USER_AGENT);
         return res;
+    }
+
+    private void setCookies(MultiValueMap<String, String> cookies) {
+        cookies.setAll(
+                Map.of(
+                        "A", "a_cookie",
+                        "X", "x_cookie"
+                )
+        );
     }
 }
