@@ -29,18 +29,21 @@ dependencies {
     // db
     compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'org.postgresql:postgresql'
-    compile 'com.h2database:h2:1.4.+';
+    compile 'com.h2database:h2:1.4.+'
 
     // aws s3
     compile 'com.amazonaws:aws-java-sdk-s3:1.11.869'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-    // lombock
+    // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'com.squareup.okhttp3:mockwebserver'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 
     // log

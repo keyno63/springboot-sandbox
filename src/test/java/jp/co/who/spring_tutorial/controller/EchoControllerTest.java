@@ -2,6 +2,7 @@ package jp.co.who.spring_tutorial.controller;
 
 import jp.co.who.spring_tutorial.security.SecurityConfig;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -29,8 +30,8 @@ public class EchoControllerTest {
 
     MockMvc mockMvc, mockMvcSecurity;
 
-//    @Autowired
-//    FilterChainProxy springSecurityFilterChain;
+    @Autowired
+    FilterChainProxy springSecurityFilterChain;
 
     @Mock
     WebClient wb;
@@ -38,12 +39,12 @@ public class EchoControllerTest {
     @Before
     public void setupMockMvc() {
         mockMvc = MockMvcBuilders
-                .standaloneSetup(new EchoController(wb))
+                .standaloneSetup(new EchoController())
                 .build();
         // security
         mockMvcSecurity = MockMvcBuilders
-                .standaloneSetup(new EchoController(wb))
-                //.apply(SecurityMockMvcConfigurers.springSecurity(springSecurityFilterChain))
+                .standaloneSetup(new EchoController())
+                .apply(SecurityMockMvcConfigurers.springSecurity(springSecurityFilterChain))
                 .build();
 
         wb = mock(WebClient.class);
@@ -79,7 +80,8 @@ public class EchoControllerTest {
                 .andExpect(content().string(easyContent));
     }
 
-    @Test
+    //@Test
+    @Ignore
     public void json_reのテスト() throws Exception {
         // TODO: json ファイルの読み込みで表現すべき
         final String json =
@@ -104,13 +106,13 @@ public class EchoControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void POSTテストwoクロスサイトリクエストフォージェリー() throws Exception {
-//        mockMvcSecurity.perform(post("/echo/post").with(csrf()))
-//                .andExpect(status().isOk())
-//                .andDo(log());
-//        mockMvcSecurity.perform(post("/echo/post"))
-//                .andExpect(status().isForbidden())
-//                .andDo(log());
-//    }
+    @Test
+    public void POSTテストwoクロスサイトリクエストフォージェリー() throws Exception {
+        mockMvcSecurity.perform(post("/echo/post").with(csrf()))
+                .andExpect(status().isOk())
+                .andDo(log());
+        mockMvcSecurity.perform(post("/echo/post"))
+                .andExpect(status().isForbidden())
+                .andDo(log());
+    }
 }

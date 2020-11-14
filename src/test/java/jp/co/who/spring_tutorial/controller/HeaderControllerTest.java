@@ -7,6 +7,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import javax.servlet.http.Cookie;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -24,13 +27,14 @@ public class HeaderControllerTest {
 
     @Test
     public void getCookieEndpoint() throws Exception {
-        mockMvc.perform(get("/header/cookie"))
+        mockMvc.perform(get("/api/header/cookie")
+                  .cookie(new Cookie("sample", "sample_value")))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void getUserAgentEndpoint() throws Exception {
-        mockMvc.perform(get("/header/userAgent"))
+        mockMvc.perform(get("/api/header/userAgent").header("User-Agent", "sample_user_agent"))
                 .andExpect(status().isOk());
     }
 }

@@ -38,7 +38,7 @@ public class ApiWebclientController {
     @ResponseBody
     public JsonDataTest test(@Validated JsonDataTest data) {
         Logger logger = LoggerFactory.getLogger(EchoController.class);
-        logger.info("xxxxx: " + data.toString());
+        logger.info("test: " + data.toString());
         var x = USER_AGENT;
         return data;
     }

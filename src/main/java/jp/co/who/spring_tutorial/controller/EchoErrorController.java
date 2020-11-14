@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import reactor.util.annotation.NonNullApi;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -19,10 +20,10 @@ import java.util.Map;
 public class EchoErrorController extends ResponseEntityExceptionHandler {
 
     private final Map<Class<? extends Exception>, String> messageMappings =
-            Collections.unmodifiableMap(new LinkedHashMap() {{
-                put(HttpMessageNotReadableException.class,
-                        "Request body is Invalid.");
-            }});
+            Collections.unmodifiableMap(
+                Map.of(HttpMessageNotReadableException.class,
+                        "Request body is Invalid.")
+            );
 
     private String resolveMessage(Exception ex, String defaultMessage) {
         return messageMappings.entrySet().stream()
@@ -59,7 +60,7 @@ public class EchoErrorController extends ResponseEntityExceptionHandler {
             SomethingException e, WebRequest request
     ) {
         return handleExceptionInternal(
-                e, null, null, HttpStatus.NOT_FOUND, request
+                e, null, HttpHeaders.EMPTY, HttpStatus.NOT_FOUND, request
         );
     }
     // System Exception handled.
@@ -69,7 +70,7 @@ public class EchoErrorController extends ResponseEntityExceptionHandler {
     ) {
         ApiError apiError = create(e, "System Error.");
         return super.handleExceptionInternal(
-                e, apiError, null, HttpStatus.INTERNAL_SERVER_ERROR, req
+                e, apiError, HttpHeaders.EMPTY, HttpStatus.INTERNAL_SERVER_ERROR, req
         );
     }
 
