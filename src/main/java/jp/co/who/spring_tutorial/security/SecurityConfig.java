@@ -9,8 +9,7 @@ import org.springframework.security.web.util.matcher.AndRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //String noneCheck = "/api";
-        String noneCheck = "/echo";
+        String noneCheck = "/api";
         http.csrf().requireCsrfProtectionMatcher(request -> {
             if (request.getMethod().equals("GET"))
                 return false;

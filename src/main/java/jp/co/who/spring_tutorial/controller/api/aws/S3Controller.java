@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller.aws;
+package jp.co.who.spring_tutorial.controller.api.aws;
 
 import com.amazonaws.services.s3.model.Bucket;
 import jp.co.who.spring_tutorial.service.S3Service;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/aws/s3")
+@RequestMapping("/api/aws/s3")
 public class S3Controller {
 
     private final S3Service s3Service;

@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller;
+package jp.co.who.spring_tutorial.controller.api.sample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * Header を制御する処理をまとめた Controller
  */
-@RequestMapping("/header")
+@RequestMapping("/api/header")
 @Controller
 public class HeaderController {
 

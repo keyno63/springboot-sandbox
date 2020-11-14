@@ -1,5 +1,6 @@
 package jp.co.who.spring_tutorial.controller;
 
+import jp.co.who.spring_tutorial.controller.api.sample.HeaderController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

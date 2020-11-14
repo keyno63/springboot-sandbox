@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller;
+package jp.co.who.spring_tutorial.controller.api.sample;
 
 import org.springframework.web.bind.annotation.*;
 
