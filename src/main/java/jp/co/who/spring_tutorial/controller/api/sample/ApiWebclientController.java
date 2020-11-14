@@ -9,6 +9,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -64,8 +65,14 @@ public class ApiWebclientController {
         JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("y", "ame");
         JsonDataTest jst = new JsonDataTest("x", List.of(c));
         //Mono<JsonDataTest> mjst = Mono.
+        final String URL_BASE_PATH = "http://localhost:8080/";
+        String uri = UriComponentsBuilder
+                .fromUriString(URL_BASE_PATH)
+                .path("api/webclient/test3")
+                .build()
+                .toUriString();
         JsonDataTest res = wc.post()
-                .uri("http://localhost:8080/echo/test3")
+                .uri(uri)
                 .contentType(APPLICATION_JSON)
                 //.cookie("cookie_name", "cookie_value")
                 .cookies(rCookies -> setCookies(rCookies))
