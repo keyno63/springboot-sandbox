@@ -4,9 +4,12 @@ import jp.co.who.spring_tutorial.controller.api.sample.HeaderController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import javax.servlet.http.Cookie;
 
@@ -17,6 +20,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class HeaderControllerTest {
 
     private MockMvc mockMvc;
+
+    @Mock
+    private WebClient we;
 
     @Before
     public void setupMockMvc() {
@@ -36,5 +42,7 @@ public class HeaderControllerTest {
     public void getUserAgentEndpoint() throws Exception {
         mockMvc.perform(get("/api/header/userAgent").header("User-Agent", "sample_user_agent"))
                 .andExpect(status().isOk());
+        String x = "あああ";
+        System.out.println(x);
     }
 }
