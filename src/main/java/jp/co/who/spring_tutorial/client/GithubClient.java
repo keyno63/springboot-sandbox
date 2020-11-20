@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestOperations;
 
 import java.net.URI;
 
+@Component
 public class GithubClient {
     private static final String url = "http://localhost:8080/echo/easy";
     @Autowired
@@ -27,7 +29,4 @@ public class GithubClient {
     ResponseEntity<Void> res =
             restOperations.exchange(req, Void.class);
 
-    public void print() {
-        System.out.println(resource);
-    }
 }
