@@ -1,11 +1,10 @@
 package jp.co.who.spring_tutorial.controller;
 
-import jp.co.who.spring_tutorial.controller.api.sample.HeaderController;
+import jp.co.who.spring_tutorial.api.sample.controller.HeaderController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;

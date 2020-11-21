@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller.api.sample;
+package jp.co.who.spring_tutorial.api.sample.controller;
 
 import jp.co.who.spring_tutorial.controller.EchoController;
 import jp.co.who.spring_tutorial.dto.JsonDataTest;

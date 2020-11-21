@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller.api.aws;
+package jp.co.who.spring_tutorial.api.aws.controller;
 
 import com.amazonaws.services.s3.model.Bucket;
 import jp.co.who.spring_tutorial.service.S3Service;
