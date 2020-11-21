@@ -10,7 +10,6 @@ import org.springframework.web.client.RestOperations;
 
 import java.net.URI;
 
-@Component
 public class GithubClient {
     private static final String url = "http://localhost:8080/echo/easy";
     @Autowired
@@ -28,5 +27,4 @@ public class GithubClient {
             .body(resource);
     ResponseEntity<Void> res =
             restOperations.exchange(req, Void.class);
-
 }

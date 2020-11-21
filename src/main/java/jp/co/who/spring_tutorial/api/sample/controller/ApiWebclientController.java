@@ -1,7 +1,6 @@
 package jp.co.who.spring_tutorial.api.sample.controller;
 
-import jp.co.who.spring_tutorial.view.controller.EchoController;
-import jp.co.who.spring_tutorial.dto.JsonDataTest;
+import jp.co.who.spring_tutorial.api.sample.dto.JsonDataTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -47,7 +46,7 @@ public class ApiWebclientController {
     @PostMapping("test3")
     @ResponseBody
     public JsonDataTest test(@RequestBody JsonDataTest data, @RequestHeader(name = "User-Agent", required = false) String ua, HttpServletRequest request) {
-        Logger logger = LoggerFactory.getLogger(EchoController.class);
+        Logger logger = LoggerFactory.getLogger(ApiWebclientController.class);
         logger.info("UA header: " + Optional.ofNullable(ua).map(Objects::toString).orElse("null"));
         logger.info("data: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
         Cookie[] cookies = request.getCookies();

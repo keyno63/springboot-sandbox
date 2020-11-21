@@ -1,6 +1,7 @@
 package jp.co.who.spring_tutorial.api.sample;
 
-import jp.co.who.spring_tutorial.dto.JsonDataTest;
+import jp.co.who.spring_tutorial.api.sample.controller.ApiWebclientController;
+import jp.co.who.spring_tutorial.api.sample.dto.JsonDataTest;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.Test;
