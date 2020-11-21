@@ -1,6 +1,6 @@
 package jp.co.who.spring_tutorial.service;
 
-import jp.co.who.spring_tutorial.service.MessageService;
+import jp.co.who.spring_tutorial.api.message.service.MessageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

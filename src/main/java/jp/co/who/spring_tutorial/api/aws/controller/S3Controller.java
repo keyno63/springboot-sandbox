@@ -1,7 +1,7 @@
 package jp.co.who.spring_tutorial.api.aws.controller;
 
 import com.amazonaws.services.s3.model.Bucket;
-import jp.co.who.spring_tutorial.service.S3Service;
+import jp.co.who.spring_tutorial.api.aws.service.S3Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

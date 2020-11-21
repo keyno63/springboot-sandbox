@@ -1,7 +1,6 @@
-package jp.co.who.spring_tutorial.service;
+package jp.co.who.spring_tutorial.api.message.service;
 
-import jp.co.who.spring_tutorial.repository.MessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jp.co.who.spring_tutorial.api.message.repository.MessageRepository;
 import org.springframework.context.MessageSource;import org.springframework.stereotype.Service;
 
 import java.util.Locale;

@@ -1,13 +1,12 @@
-package jp.co.who.spring_tutorial.controller;
+package jp.co.who.spring_tutorial.view.controller;
 
-import jp.co.who.spring_tutorial.security.SecurityConfig;
+import jp.co.who.spring_tutorial.config.SecurityConfig;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ContextConfiguration;

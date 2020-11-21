@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.security;
+package jp.co.who.spring_tutorial.config;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

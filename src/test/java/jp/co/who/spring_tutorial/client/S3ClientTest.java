@@ -2,6 +2,7 @@ package jp.co.who.spring_tutorial.client;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
+import jp.co.who.spring_tutorial.api.aws.client.S3Client;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

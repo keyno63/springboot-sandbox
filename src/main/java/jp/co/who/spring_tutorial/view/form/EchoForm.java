@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.form;
+package jp.co.who.spring_tutorial.view.form;
 
 import java.io.Serializable;
 

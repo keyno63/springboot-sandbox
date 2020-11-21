@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.client;
+package jp.co.who.spring_tutorial.api.aws.client;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;

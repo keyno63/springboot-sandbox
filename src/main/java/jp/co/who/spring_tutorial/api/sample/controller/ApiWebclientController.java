@@ -1,6 +1,6 @@
 package jp.co.who.spring_tutorial.api.sample.controller;
 
-import jp.co.who.spring_tutorial.controller.EchoController;
+import jp.co.who.spring_tutorial.view.controller.EchoController;
 import jp.co.who.spring_tutorial.dto.JsonDataTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

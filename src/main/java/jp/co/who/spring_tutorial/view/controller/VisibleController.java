@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller;
+package jp.co.who.spring_tutorial.view.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

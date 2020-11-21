@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.repository;
+package jp.co.who.spring_tutorial.api.message.repository;
 
 import org.springframework.stereotype.Repository;
 

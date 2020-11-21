@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller;
+package jp.co.who.spring_tutorial.view.controller;
 
 import jp.co.who.spring_tutorial.api.sample.controller.HeaderController;
 import org.junit.Before;

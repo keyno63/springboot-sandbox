@@ -1,7 +1,7 @@
-package jp.co.who.spring_tutorial.service;
+package jp.co.who.spring_tutorial.api.aws.service;
 
 import com.amazonaws.services.s3.model.Bucket;
-import jp.co.who.spring_tutorial.client.S3Client;
+import jp.co.who.spring_tutorial.api.aws.client.S3Client;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

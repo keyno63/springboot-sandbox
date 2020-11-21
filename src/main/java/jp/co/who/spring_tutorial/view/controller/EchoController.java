@@ -1,6 +1,6 @@
-package jp.co.who.spring_tutorial.controller;
+package jp.co.who.spring_tutorial.view.controller;
 
-import jp.co.who.spring_tutorial.form.EchoForm;
+import jp.co.who.spring_tutorial.view.form.EchoForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

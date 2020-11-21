@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.controller;
+package jp.co.who.spring_tutorial.view.controller;
 
 import jp.co.who.spring_tutorial.api.ApiError;
 import jp.co.who.spring_tutorial.exception.SomethingException;
@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import reactor.util.annotation.NonNullApi;
 
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 @ControllerAdvice
