@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
 @Configuration
-@ComponentScan("jp.co.who.spring_tutorial.repository")
+@ComponentScan("jp.co.who.spring_tutorial.api.message.repository")
 public class MessageConfig {
 
     //@Bean
