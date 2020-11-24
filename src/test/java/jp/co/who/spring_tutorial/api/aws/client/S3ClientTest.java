@@ -11,9 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
 
 // SpringRunnner のお試し
@@ -32,13 +32,16 @@ public class S3ClientTest {
 
     @Before
     public void setUp() {
-        List<Bucket> list = new ArrayList<>();
-        list.add(ret);
+        List<Bucket> list = List.of(
+                new Bucket("dummy_bucket")
+        );
         doReturn(list).when(amazonS3).listBuckets();
     }
 
     @Test
-    public void test1() {
-        s3Client.getBuckets();
+    public void getBucketのテスト() {
+        List<Bucket> actual = s3Client.getBuckets();
+        assertThat(actual.get(0).getName())
+                .isEqualTo("dummy_bucket");
     }
 }
