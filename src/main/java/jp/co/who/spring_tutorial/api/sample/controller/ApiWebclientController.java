@@ -65,8 +65,8 @@ public class ApiWebclientController {
         JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("y", "ame");
         JsonDataTest jst = new JsonDataTest("x", List.of(c));
         //Mono<JsonDataTest> mjst = Mono.
-        //final String URL_BASE_PATH = "http://localhost:8080/";
-        final String URL_BASE_PATH = "http://192.168.123.123:8080/";
+        final String URL_BASE_PATH = "http://localhost:8080/";
+        //final String URL_BASE_PATH = "http://192.168.123.123:8080/";
         String uri = UriComponentsBuilder
                 .fromUriString(URL_BASE_PATH)
                 .path("api/webclient/test3")
@@ -81,7 +81,7 @@ public class ApiWebclientController {
                 //.header(ACCEPT, APPLICATION_JSON_VALUE)
                 //.header(ACCEPT, TEXT_PLAIN_VALUE)
                 .accept(APPLICATION_JSON)
-                .header(USER_AGENT)
+                //.header(USER_AGENT, "")
                 .retrieve()
                 .bodyToMono(JsonDataTest.class)
                 .onErrorResume(error -> {
