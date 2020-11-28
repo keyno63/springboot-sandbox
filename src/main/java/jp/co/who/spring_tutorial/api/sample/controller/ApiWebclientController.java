@@ -4,6 +4,7 @@ import jp.co.who.spring_tutorial.api.sample.dto.JsonDataTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,10 @@ public class ApiWebclientController {
 
     private final WebClient wc;
 
-    public ApiWebclientController(WebClient wc) {
+    private final ApiWebclientService apiWebclientService;
+
+    public ApiWebclientController(WebClient wc, ApiWebclientService apiWebclientService) {
+        this.apiWebclientService = apiWebclientService;
         this.wc = wc;
     }
 
@@ -46,17 +50,7 @@ public class ApiWebclientController {
     @PostMapping("test3")
     @ResponseBody
     public JsonDataTest test(@RequestBody JsonDataTest data, @RequestHeader(name = "User-Agent", required = false) String ua, HttpServletRequest request) {
-        Logger logger = LoggerFactory.getLogger(ApiWebclientController.class);
-        logger.info("UA header: " + Optional.ofNullable(ua).map(Objects::toString).orElse("null"));
-        logger.info("data: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
-        Cookie[] cookies = request.getCookies();
-        for (var c: cookies) {
-            String message = String.format("cookie. name: %s, value: %s.", c.getName(), c.getValue());
-            logger.info(message);
-        }
-        JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("z", "kome");
-        JsonDataTest jst = new JsonDataTest("ret", List.of(c));
-        return jst;
+        return apiWebclientService.createPrintResponse(data, ua, request);
     }
 
     @GetMapping("test")
@@ -103,5 +97,23 @@ public class ApiWebclientController {
                         "X", "x_cookie"
                 )
         );
+    }
+
+    @Service
+    public static class ApiWebclientService {
+
+        public JsonDataTest createPrintResponse(JsonDataTest data, String ua, HttpServletRequest request) {
+            Logger logger = LoggerFactory.getLogger(ApiWebclientController.class);
+            logger.info("UA header: " + Optional.ofNullable(ua).map(Objects::toString).orElse("null"));
+            logger.info("data: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
+            Cookie[] cookies = request.getCookies();
+            for (var c: cookies) {
+                String message = String.format("cookie. name: %s, value: %s.", c.getName(), c.getValue());
+                logger.info(message);
+            }
+            JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("z", "kome");
+            JsonDataTest jst = new JsonDataTest("ret", List.of(c));
+            return jst;
+        }
     }
 }
