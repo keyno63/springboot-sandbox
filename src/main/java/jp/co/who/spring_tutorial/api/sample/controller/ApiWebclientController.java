@@ -60,7 +60,7 @@ public class ApiWebclientController {
     @Service
     public static class ApiWebclientService {
 
-        private ApiWebClientRepository apiWebClientRepository;
+        private final ApiWebClientRepository apiWebClientRepository;
 
         public ApiWebclientService(ApiWebClientRepository apiWebClientRepository) {
             this.apiWebClientRepository = apiWebClientRepository;
@@ -70,10 +70,14 @@ public class ApiWebclientController {
             Logger logger = LoggerFactory.getLogger(ApiWebclientController.class);
             logger.info("UA header: " + Optional.ofNullable(ua).map(Objects::toString).orElse("null"));
             logger.info("data: " + Optional.ofNullable(data).map(Objects::toString).orElse("null"));
-            Cookie[] cookies = request.getCookies();
-            for (var c: cookies) {
-                String message = String.format("cookie. name: %s, value: %s.", c.getName(), c.getValue());
-                logger.info(message);
+            try {
+                Cookie[] cookies = request.getCookies();
+                for (var c : cookies) {
+                    String message = String.format("cookie. name: %s, value: %s.", c.getName(), c.getValue());
+                    logger.info(message);
+                }
+            } catch (Exception e) {
+                logger.error("exception happenedd, while getting cookie. error = {}", e.getMessage(), e);
             }
             JsonDataTest.JsonDataChildren c = new JsonDataTest.JsonDataChildren("z", "kome");
             JsonDataTest jst = new JsonDataTest("ret", List.of(c));
@@ -90,7 +94,7 @@ public class ApiWebclientController {
 
         private final WebClient wc;
 
-        private final String URL_BASE_PATH = "http://localhost:8080/";
+        private final static String URL_BASE_PATH = "http://localhost:8080/";
         //final String URL_BASE_PATH = "http://192.168.123.123:8080/";
 
         public ApiWebClientRepository(WebClient wc) {
