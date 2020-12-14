@@ -118,7 +118,7 @@ public class ApiWebclientController {
                     //.header(ACCEPT, APPLICATION_JSON_VALUE)
                     //.header(ACCEPT, TEXT_PLAIN_VALUE)
                     .accept(APPLICATION_JSON)
-                    //.header(USER_AGENT, "")
+                    .header(USER_AGENT, "")
                     .retrieve()
                     .bodyToMono(JsonDataTest.class)
                     .onErrorResume(error -> {

@@ -1,10 +1,7 @@
 package jp.co.who.spring_tutorial.api.sample.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -18,6 +15,12 @@ public class HeaderController {
     @GetMapping("/userAgent")
     @ResponseBody
     public String userAgent(@RequestHeader(HeaderValues.USER_AGENT) String value) {
+        return value;
+    }
+
+    @PostMapping("/userAgent")
+    @ResponseBody
+    public String userAgentPost(@RequestHeader(HeaderValues.USER_AGENT) String value) {
         return value;
     }
 
