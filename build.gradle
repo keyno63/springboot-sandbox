@@ -47,12 +47,27 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     // test
-    testImplementation('org.springframework.boot:spring-boot-starter-test'){
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude(group: 'org.junit.vintage', module: 'junit-vintage-engine')
     }
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.assertj:assertj-core'
     testImplementation 'com.squareup.okhttp3:mockwebserver'
 
     // log
     implementation "ch.qos.logback:logback-classic:1.2.3"
+
+}
+
+dependencies {
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.assertj:assertj-core'
 }
