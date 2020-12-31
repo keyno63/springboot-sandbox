@@ -10,6 +10,6 @@ public class BoardController {
 
     @GetMapping("/home")
     public String home() {
-        return "index";
+        return "board/home";
     }
 }
