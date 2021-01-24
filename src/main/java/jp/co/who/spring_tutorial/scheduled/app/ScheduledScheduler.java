@@ -16,8 +16,8 @@ public class ScheduledScheduler {
     }
 
     @Scheduled(
-            fixedRateString = "1000",
-            initialDelayString = "1000"
+            fixedRateString = "10000",
+            initialDelayString = "0"
     )
     public void exec() {
         try {
