@@ -1,5 +1,7 @@
-package jp.co.who.spring_tutorial.validator.users;
+package jp.co.who.spring_tutorial.validator.users.domain;
 
+import jp.co.who.spring_tutorial.validator.users.User;
+import jp.co.who.spring_tutorial.validator.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

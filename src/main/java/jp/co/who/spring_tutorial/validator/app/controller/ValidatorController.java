@@ -5,8 +5,10 @@ import jp.co.who.spring_tutorial.validator.bookmark.domain.BookCategory;
 import jp.co.who.spring_tutorial.validator.bookmark.domain.BookData;
 import jp.co.who.spring_tutorial.validator.bookmark.domain.CategorisedBookData;
 import jp.co.who.spring_tutorial.validator.bookmark.service.CategorisedBookService;
+import jp.co.who.spring_tutorial.validator.users.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,22 +17,25 @@ import java.util.stream.Collectors;
 @RestController
 public class ValidatorController {
 
+    private final UserService userService;
     private final CategorisedBookService categorisedBookService;
 
-    ValidatorController(CategorisedBookService categorisedBookService) {
+    ValidatorController(UserService userService, CategorisedBookService categorisedBookService) {
+        this.userService = userService;
         this.categorisedBookService = categorisedBookService;
     }
 
     @GetMapping("/validation")
-    public String get() {
-        return "hoge";
+    public ResponseEntity<ValidationResponse> get(@RequestParam String userId) {
+        Boolean isDuplicate = userService.checkDuplicate(userId);
+        return ResponseEntity.ok(new ValidationResponse(isDuplicate));
     }
 
     @GetMapping("/validation/sql/categorise")
-    public ResponseEntity<ValidationResponse> categorise() {
+    public ResponseEntity<CategorizedBookmarkResponse> categorise() {
         List<CategorisedBookData> res = categorisedBookService.get();
         return ResponseEntity.ok()
-                .body(new ValidationResponse(res));
+                .body(new CategorizedBookmarkResponse(res));
     }
 
     @GetMapping("/validation/sql/book")
@@ -41,7 +46,7 @@ public class ValidatorController {
     }
 
     @GetMapping("/validation/sql/combine")
-    public ResponseEntity<ValidationResponse> combine() {
+    public ResponseEntity<CategorizedBookmarkResponse> combine() {
         List<BookData> resBook = categorisedBookService.getBook();
         List<BookCategory> resCategory = categorisedBookService.getBookCategory();
         List<CategorisedBookData> res = resBook
@@ -58,14 +63,21 @@ public class ValidatorController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok()
-                .body(new ValidationResponse(res));
+                .body(new CategorizedBookmarkResponse(res));
     }
 
     public static class ValidationResponse {
+        @JsonProperty Boolean duplicated;
 
+        ValidationResponse(Boolean duplicated) {
+            this.duplicated = duplicated;
+        }
+    }
+
+    public static class CategorizedBookmarkResponse {
         @JsonProperty private List<CategorisedBookData> categorisedBookDataList;
 
-        ValidationResponse(List<CategorisedBookData> categorisedBookDataList) {
+        CategorizedBookmarkResponse(List<CategorisedBookData> categorisedBookDataList) {
             this.categorisedBookDataList = categorisedBookDataList;
         }
     }
