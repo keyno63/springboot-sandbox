@@ -1,11 +1,11 @@
-package jp.co.who.spring_tutorial.validator.bookmark.service;
+package jp.co.who.spring_tutorial.api.jpa.bookmark.service;
 
-import jp.co.who.spring_tutorial.validator.bookmark.domain.BookCategory;
-import jp.co.who.spring_tutorial.validator.bookmark.domain.BookData;
-import jp.co.who.spring_tutorial.validator.bookmark.domain.CategorisedBookData;
-import jp.co.who.spring_tutorial.validator.bookmark.repository.BookCategoryRepository;
-import jp.co.who.spring_tutorial.validator.bookmark.repository.BookRepository;
-import jp.co.who.spring_tutorial.validator.bookmark.repository.CategorisedBookDataRepository;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookCategory;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookData;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.CategorisedBookData;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.repository.BookCategoryRepository;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.repository.BookRepository;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.repository.CategorisedBookDataRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.validator.users;
+package jp.co.who.spring_tutorial.api.validator.users;
 
 import lombok.Getter;
 

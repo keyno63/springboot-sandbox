@@ -1,4 +1,4 @@
-package jp.co.who.spring_tutorial.validator.bookmark.domain;
+package jp.co.who.spring_tutorial.api.jpa.bookmark.domain;
 
 import lombok.Getter;
 

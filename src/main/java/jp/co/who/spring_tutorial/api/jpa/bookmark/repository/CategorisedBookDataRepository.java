@@ -1,6 +1,6 @@
-package jp.co.who.spring_tutorial.validator.bookmark.repository;
+package jp.co.who.spring_tutorial.api.jpa.bookmark.repository;
 
-import jp.co.who.spring_tutorial.validator.bookmark.domain.CategorisedBookData;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.CategorisedBookData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
