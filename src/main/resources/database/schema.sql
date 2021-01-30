@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS book (
+    id INTEGER NOT NULL,
+    book_category_id INTEGER NOT NULL,
+    name VARCHAR(32) NOT NULL
+)
+
+CREATE TABLE IF NOT EXISTS book_category (
+    id INTEGER NOT NULL,
+    name INTEGER NOT NULL,
+)
