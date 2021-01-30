@@ -1,10 +1,3 @@
-CREATE TABLE IF NOT EXISTS book (
-    id INTEGER NOT NULL,
-    book_category_id INTEGER NOT NULL,
-    name VARCHAR(32) NOT NULL
-)
+CREATE TABLE IF NOT EXISTS book ( id INT NOT NULL, book_category_id INT NOT NULL, `name` text NOT NULL)
 
-CREATE TABLE IF NOT EXISTS book_category (
-    id INTEGER NOT NULL,
-    name INTEGER NOT NULL,
-)
+CREATE TABLE IF NOT EXISTS book_category (id INT NOT NULL, `name` text NOT NULL)
