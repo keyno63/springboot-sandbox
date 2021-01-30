@@ -11,5 +11,5 @@ public interface BookRepository extends JpaRepository<BookData, Integer> {
     @Query(value = "select b.id as id, b.book_category_id as category_id, b.name as name "
             + "from book b ",
             nativeQuery = true)
-    List<BookData> find();
+    List<BookData> findAll();
 }

@@ -13,5 +13,5 @@ public interface CategorisedBookDataRepository extends JpaRepository<Categorised
             + "left join book_category c on c.id = b.book_category_id "
             + "order by b.id ",
             nativeQuery = true)
-    List<CategorisedBookData> find();
+    List<CategorisedBookData> findAll();
 }

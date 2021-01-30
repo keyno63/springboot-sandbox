@@ -26,14 +26,14 @@ public class CategorisedBookService {
     }
 
     public List<CategorisedBookData> get() {
-        return repository.find();
+        return repository.findAll();
     }
 
     public List<BookData> getBook() {
-        return bookRepository.find();
+        return bookRepository.findAll();
     }
 
     public List<BookCategory> getBookCategory() {
-        return bookCategoryRepository.find();
+        return bookCategoryRepository.findAll();
     }
 }
