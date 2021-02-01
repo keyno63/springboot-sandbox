@@ -1,18 +1,11 @@
 package jp.co.who.spring_tutorial.api.validator.app.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookCategory;
-import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookData;
-import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.CategorisedBookData;
-import jp.co.who.spring_tutorial.api.jpa.bookmark.service.CategorisedBookService;
 import jp.co.who.spring_tutorial.api.validator.users.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class ValidatorController {

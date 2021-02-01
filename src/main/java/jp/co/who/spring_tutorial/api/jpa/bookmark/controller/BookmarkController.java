@@ -8,12 +8,14 @@ import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.CategorisedBookData;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.service.CategorisedBookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController("/api/jpa/bbokmark")
+@RestController
+@RequestMapping("/api/jpa/bookmark")
 public class BookmarkController {
 
     private final CategorisedBookService categorisedBookService;
