@@ -13,6 +13,7 @@ public @interface UserIdDuplicateCheck {
 
     String message() default "{mrs.app.reservation.UserIdDuplicateCheckValidator.message}";
 
+    // groups, payload は必須
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 
