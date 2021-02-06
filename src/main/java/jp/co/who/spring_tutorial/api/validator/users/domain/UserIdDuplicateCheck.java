@@ -11,6 +11,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserIdDuplicateCheck {
 
+    // これは設定値からとる場合
     String message() default "{mrs.app.reservation.UserIdDuplicateCheckValidator.message}";
 
     // groups, payload は必須
