@@ -58,6 +58,10 @@ dependencies {
     testImplementation 'org.assertj:assertj-core'
     testImplementation 'com.squareup.okhttp3:mockwebserver'
 
+    // powermock
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.2'
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.2'
+
     // log
     implementation "ch.qos.logback:logback-classic:1.2.3"
 
