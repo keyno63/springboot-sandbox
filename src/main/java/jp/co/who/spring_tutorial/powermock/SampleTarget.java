@@ -3,6 +3,7 @@ package jp.co.who.spring_tutorial.powermock;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SampleTarget {
@@ -35,7 +36,7 @@ public class SampleTarget {
 
         @Override
         public String toString() {
-            return String.join(",", List.of(value1 + value2));
+            return String.join(",", Arrays.asList(value1, value2));
         }
     }
 }

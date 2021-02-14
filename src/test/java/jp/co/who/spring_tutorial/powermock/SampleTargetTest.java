@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 public class SampleTargetTest {
 
     @Test
-    public void test001() throws Exception{
+    public void test001() throws Exception {
 
         final String value1 = "1_value";
         final String value2 = "2_value";
