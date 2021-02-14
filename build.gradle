@@ -79,3 +79,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.assertj:assertj-core'
 }
+
+test {
+    // Junit5 を使う設定
+    useJUnitPlatform()
+}
