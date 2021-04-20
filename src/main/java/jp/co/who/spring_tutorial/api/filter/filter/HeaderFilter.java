@@ -22,6 +22,8 @@ public class HeaderFilter implements Filter {
 
     protected static final String ORIGINAL_HEADER_NAME = "sample-header";
 
+    protected static final String ATTR_NAME_VALUE = "new-cookie";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(HeaderFilter.class);
 
     @Override
@@ -54,7 +56,7 @@ public class HeaderFilter implements Filter {
             LOGGER.debug("cookie is exist {}", cookie.getValue());
         }
 
-        request.setAttribute("new-cookie", cookie);
+        request.setAttribute(ATTR_NAME_VALUE, cookie);
         chain.doFilter(request, response);
     }
 

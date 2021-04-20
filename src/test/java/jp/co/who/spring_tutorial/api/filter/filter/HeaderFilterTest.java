@@ -37,7 +37,7 @@ class HeaderFilterTest {
         assertThat(mockChain.getRequest()).isEqualTo(servletRequest);
         var v = mockChain.getRequest();
         assertThat(v).isNotNull();
-        var vv = (Cookie) v.getAttribute("new-cookie");
+        var vv = (Cookie) v.getAttribute(HeaderFilter.ATTR_NAME_VALUE);
         assertThat(vv).isNotNull();
         assertThat(vv.getValue()).isEqualTo(cookieValue);
     }
@@ -56,7 +56,7 @@ class HeaderFilterTest {
         assertThat(mockChain.getRequest()).isEqualTo(servletRequest);
         var v = mockChain.getRequest();
         assertThat(v).isNotNull();
-        var vv = (Cookie) v.getAttribute("new-cookie");
+        var vv = (Cookie) v.getAttribute(HeaderFilter.ATTR_NAME_VALUE);
         assertThat(vv.getValue()).isEqualTo(testValue);
     }
 }
