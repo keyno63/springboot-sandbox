@@ -59,4 +59,19 @@ class HeaderFilterTest {
         var vv = (Cookie) v.getAttribute(HeaderFilter.ATTR_NAME_VALUE);
         assertThat(vv.getValue()).isEqualTo(testValue);
     }
+
+    @Test
+    void Cookieが存在しない時のヘッダー値取得テスト() throws Exception {
+        var testValue = "C";
+
+        servletRequest.addHeader(HeaderFilter.ORIGINAL_HEADER_NAME, testValue);
+        MockFilterChain mockChain = new MockFilterChain();
+        target.doFilter(servletRequest, servletResponse, mockChain);
+
+        assertThat(mockChain.getRequest()).isEqualTo(servletRequest);
+        var v = mockChain.getRequest();
+        assertThat(v).isNotNull();
+        var vv = (Cookie) v.getAttribute(HeaderFilter.ATTR_NAME_VALUE);
+        assertThat(vv.getValue()).isEqualTo(testValue);
+    }
 }
