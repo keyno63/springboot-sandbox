@@ -20,6 +20,8 @@ import java.util.Optional;
 public class HeaderFilter implements Filter {
     private final String TARGET_COOKIE_NAME = "target-cookie";
 
+    private final String ORIGINAL_HEADER_NAME = "sample-header";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(HeaderFilter.class);
 
     @Override
@@ -42,6 +44,12 @@ public class HeaderFilter implements Filter {
 
         if (Objects.isNull(cookie)) {
             LOGGER.debug("cookie is null");
+            var x = ((HttpServletRequest) request).getHeader(ORIGINAL_HEADER_NAME);
+            var ret = Optional.ofNullable(x).orElse("");
+            var cookiev = new Cookie(TARGET_COOKIE_NAME, ret);
+            request.setAttribute("new-cookie", cookiev);
+            chain.doFilter(request, response);
+            return;
         } else {
             LOGGER.debug("cookie is exist {}", cookie.getValue());
         }
