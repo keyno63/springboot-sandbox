@@ -18,9 +18,9 @@ import java.util.Optional;
         asyncSupported = true
 )
 public class HeaderFilter implements Filter {
-    private final String TARGET_COOKIE_NAME = "target-cookie";
+    protected static final String TARGET_COOKIE_NAME = "target-cookie";
 
-    private final String ORIGINAL_HEADER_NAME = "sample-header";
+    protected static final String ORIGINAL_HEADER_NAME = "sample-header";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HeaderFilter.class);
 
