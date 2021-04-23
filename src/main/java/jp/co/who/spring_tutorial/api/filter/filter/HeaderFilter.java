@@ -29,7 +29,7 @@ public class HeaderFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(HeaderFilter.class);
 
     @Override
-    public final void init(final FilterConfig filterConfig) throws ServletException {
+    public final void init(final FilterConfig filterConfig) {
 
     }
 
