@@ -17,7 +17,9 @@ public class FilterController {
     public Response header(HttpServletRequest request) {
         var x = request.getAttribute("new-cookie");
         Cookie z = (Cookie) x;
-        return new Response(z.getValue());
+        var serverNameObj = request.getAttribute("filter-server");
+        String serverName = (String) serverNameObj;
+        return new Response(z.getValue(), serverName);
     }
 
     @Getter
@@ -26,8 +28,12 @@ public class FilterController {
         @JsonProperty
         private final String value;
 
-        public Response(String value) {
+        @JsonProperty
+        private final String serverName;
+
+        public Response(String value, String serverName) {
             this.value = value;
+            this.serverName = serverName;
         }
     }
 }

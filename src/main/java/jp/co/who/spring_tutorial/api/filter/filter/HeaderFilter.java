@@ -24,6 +24,8 @@ public class HeaderFilter implements Filter {
 
     protected static final String ATTR_NAME_VALUE = "new-cookie";
 
+    protected static final String ATTR_NAME_SERVERNAME = "filter-server";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(HeaderFilter.class);
 
     @Override
@@ -57,6 +59,7 @@ public class HeaderFilter implements Filter {
         }
 
         request.setAttribute(ATTR_NAME_VALUE, cookie);
+        request.setAttribute(ATTR_NAME_SERVERNAME, request.getServerName());
         chain.doFilter(request, response);
     }
 
