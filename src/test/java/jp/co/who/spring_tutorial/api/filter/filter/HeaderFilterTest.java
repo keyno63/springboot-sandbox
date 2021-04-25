@@ -74,4 +74,8 @@ class HeaderFilterTest {
         var vv = (Cookie) v.getAttribute(HeaderFilter.ATTR_NAME_VALUE);
         assertThat(vv.getValue()).isEqualTo(testValue);
     }
+
+    @Test
+    void モックのテスト() {
+    }
 }
