@@ -9,7 +9,9 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
+@SuppressWarnings("NonAsciiCharacters")
 class HeaderFilterTest {
 
     MockHttpServletRequest servletRequest;
@@ -77,5 +79,6 @@ class HeaderFilterTest {
 
     @Test
     void モックのテスト() {
+        var mock = mock(HeaderFilter.class);
     }
 }
