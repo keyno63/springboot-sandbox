@@ -10,6 +10,6 @@ public class HelloController {
 
     @RequestMapping
     public ModelAndView hello() {
-        return new ModelAndView("hello");
+        return new ModelAndView("t/q313205/hello");
     }
 }
