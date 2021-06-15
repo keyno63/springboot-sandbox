@@ -2,62 +2,48 @@ package jp.co.who.spring_tutorial.teratail.q344182.controllers;
 
 import jp.co.who.spring_tutorial.teratail.q344182.session.SampleSession;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
 
-@SpringBootTest
-//@ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {SampleSession.class})
-@AutoConfigureMockMvc
+@ExtendWith(MockitoExtension.class)
 class SessionControllerTest {
 
-    @Autowired
-    SessionController sessionController;
+    // mock mvc 不要
+    // context の設定などをすれば session 取得可能だが、
+    // 色々設定するよりすべて autowired した方が早くなってしまって
+    // mock として使っていないので
 
-    @Autowired
-    MockMvc mockMvc;
-
-    @Autowired
+    @Mock
     SampleSession sampleSession;
 
-//    @BeforeAll
-//    static void setUp() {
-//        var sampleSession = new SampleSession();
-//        mockMvc = MockMvcBuilders.standaloneSetup(new SessionController(sampleSession)).build();
-//    }
+    @InjectMocks
+    SessionController sessionController;
 
     @Test
-    void test() throws Exception {
-        var result = mockMvc
-                .perform(
-                        get("/q344182/session1")
-                                .param("name", "test_value")
-                )
-                .andExpect(status().isOk())
-                .andReturn();
+    void testSetSessionValue() {
+        final String value = "test_value";
+        doNothing().when(sampleSession).setId(anyString());
 
-        var mockSession = (MockHttpSession) result
-                .getRequest()
-                .getSession(false);
+        sessionController.session1(value);
 
-        assertThat(mockSession).isNotNull();
-
-        mockMvc.perform(
-                get("/q344182/session2")
-                        .session(mockSession)
-        )
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("test_value")));
-
+        assertTrue(true);
     }
 
+    @Test
+    void testGetSessionValue() {
+        final String value = "test_value";
+        doReturn(value).when(sampleSession).getId();
+
+        var actual = sessionController.session2();
+
+        assertThat(actual).isEqualTo(value);
+    }
 }

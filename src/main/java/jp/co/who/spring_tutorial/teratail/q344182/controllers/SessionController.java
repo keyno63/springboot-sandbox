@@ -15,13 +15,13 @@ public class SessionController {
     }
 
     @GetMapping("/q344182/session1")
-    private String session1(@RequestParam("name") String name) {
+    public String session1(@RequestParam("name") String name) {
         sampleSession.setId(name);
         return "ok";
     }
 
     @GetMapping("/q344182/session2")
-    private String session2() {
+    public String session2() {
         return sampleSession.getId();
     }
 }
