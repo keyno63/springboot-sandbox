@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.1'
+    id 'org.springframework.boot' version '2.5.3'
     id 'java'
 }
 
@@ -7,7 +7,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'jp.co.who'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = '16'
 
 configurations {
     developmentOnly
@@ -37,7 +37,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2:1.4.+'
 
     // aws s3
-    implementation 'com.amazonaws:aws-java-sdk-s3:1.11.869'
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.32'
 
     // auto reload for dev.
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -59,8 +59,8 @@ dependencies {
     testImplementation 'com.squareup.okhttp3:mockwebserver'
 
     // powermock
-    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.2'
-    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.2'
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.2'
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.2'
 
     // mockito-inline(static mock)
     testImplementation 'org.junit.platform:junit-platform-launcher:1.6.0'
@@ -72,6 +72,9 @@ dependencies {
     // log
     implementation "ch.qos.logback:logback-classic:1.2.3"
 
+    implementation 'mysql:mysql-connector-java:8.0.23'
+
+    implementation 'com.google.guava:guava:30.1-jre'
 }
 
 dependencies {
