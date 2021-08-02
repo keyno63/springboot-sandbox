@@ -6,9 +6,9 @@ Spring Boot のお試し.
 ## 環境
 使っている環境.  
 バージョンなども記載しているが、実装時の新しいもの使用.
-- Java: Java Version 14.0.1(14.0.1.hs-adpt)
-- gradle: 6.6
-- Spring Boot: 2.3
+- Java: Java Version 16
+- gradle: 7.0
+- Spring Boot: 2.5
 
 ## 起動  
 CLI からの実行は gradle wrapper から実行.  
