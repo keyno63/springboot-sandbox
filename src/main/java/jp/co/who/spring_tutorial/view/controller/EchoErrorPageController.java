@@ -33,9 +33,6 @@ public class EchoErrorPageController {
             else
                 message = "Custom error %s is occured.".format(statusCode.toString());
         }
-        ApiError ae = new ApiError();
-        ae.setMessage(message);
-        ae.setException(exception);
-        return ae;
+        return new ApiError(message, exception);
     }
 }

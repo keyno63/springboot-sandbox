@@ -2,6 +2,7 @@ package jp.co.who.spring_tutorial.view.controller;
 
 import jp.co.who.spring_tutorial.api.ApiError;
 import jp.co.who.spring_tutorial.exception.SomethingException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +15,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.Collections;
 import java.util.Map;
 
+@Slf4j
 @ControllerAdvice
 public class EchoErrorController extends ResponseEntityExceptionHandler {
 
     private final Map<Class<? extends Exception>, String> messageMappings =
-            Collections.unmodifiableMap(
+            (
                 Map.of(HttpMessageNotReadableException.class,
                         "Request body is Invalid.")
             );
@@ -34,17 +36,18 @@ public class EchoErrorController extends ResponseEntityExceptionHandler {
     }
 
     private ApiError create(Exception e, String defaultMessage) {
-        ApiError a = new ApiError();
         String message = resolveMessage(e, defaultMessage);
-        a.setMessage(message);
-        a.setException(e.getClass().toString());
-        return a;
+        log.error("failed request", e);
+        return new ApiError(message, e.getClass().toString());
     }
 
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(
-            Exception e, Object body, HttpHeaders headers,
-            HttpStatus status, WebRequest request
+            Exception e,
+            Object body,
+            HttpHeaders headers,
+            HttpStatus status,
+            WebRequest request
     ) {
         ApiError a = create(e);
         return super.handleExceptionInternal(

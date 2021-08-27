@@ -1,11 +1,14 @@
 package jp.co.who.spring_tutorial.api;
 
-import java.io.Serializable;
-
-public class ApiError implements Serializable {
+public class ApiError {
     private static final int id = 100;
     private String message;
     private String exception;
+
+    public ApiError(String message, String exception) {
+        this.message = message;
+        this.exception = exception;
+    }
 
     public int getId() {
         return this.id;
