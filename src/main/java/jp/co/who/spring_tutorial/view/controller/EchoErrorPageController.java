@@ -8,31 +8,27 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Objects;
 
 @RestController
 public class EchoErrorPageController {
     // Servlet Exception handled.
     @RequestMapping("/error_")
     public ApiError handleError(HttpServletRequest req) {
+        Exception e = (Exception) req.
+                getAttribute(RequestDispatcher.ERROR_EXCEPTION);
+        int statusCode = (int) req.
+                getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
-        String exception = "";
-        String message;
-        Exception e = (Exception) req.getAttribute(
-                RequestDispatcher.ERROR_EXCEPTION
-        );
-        Integer statusCode = (Integer) req.getAttribute(
-                RequestDispatcher.ERROR_STATUS_CODE
-        );
-        if (e != null) {
-            message = e.getMessage();
-            exception = e.getCause().toString();
+        return getApiError(e, statusCode);
+    }
+
+    private ApiError getApiError(Exception e, int statusCode) {
+        if (Objects.nonNull(e)) {
+            return new ApiError(e.getMessage(), e.getCause().toString());
         } else {
-            if (Arrays.asList(HttpStatus.values()).stream()
-                    .anyMatch(st -> st.value() == statusCode))
-                message = e.getMessage();
-            else
-                message = "Custom error %s is occured.".format(statusCode.toString());
+            String message = String.format("Custom error %d is occurred.", statusCode);
+            return new ApiError(message, "");
         }
-        return new ApiError(message, exception);
     }
 }
