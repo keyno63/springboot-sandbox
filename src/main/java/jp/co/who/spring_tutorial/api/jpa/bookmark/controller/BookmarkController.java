@@ -5,7 +5,8 @@ import jp.co.who.spring_tutorial.api.jpa.bookmark.controller.response.Categorize
 import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookCategory;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookData;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.CategorisedBookData;
-import jp.co.who.spring_tutorial.api.jpa.bookmark.service.CategorisedBookService;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.service.CategorisedBookService;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.service.CategorisedBookServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,8 @@ public class BookmarkController {
 
     private final CategorisedBookService categorisedBookService;
 
-    BookmarkController(CategorisedBookService categorisedBookService) {
-        this.categorisedBookService = categorisedBookService;
+    BookmarkController(CategorisedBookService categorisedBookServiceImpl) {
+        this.categorisedBookService = categorisedBookServiceImpl;
     }
 
     @GetMapping("/categorise")

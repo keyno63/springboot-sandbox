@@ -22,12 +22,4 @@ public class StreamController {
 
         return emitter;
     }
-
-    @GetMapping("/api/stream2")
-    public String streaming2() {
-        //var tooLongString = "x" * 100000000000000000000;
-        StringBuilder sb = new StringBuilder();
-        sb.append("1234567890abcdef".repeat(Math.max(0, 1000000000)));
-        return sb.toString();
-    }
 }

@@ -3,6 +3,7 @@ package jp.co.who.spring_tutorial.api.jpa.bookmark.service;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookCategory;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.BookData;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.CategorisedBookData;
+import jp.co.who.spring_tutorial.api.jpa.bookmark.domain.service.CategorisedBookService;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.repository.BookCategoryRepository;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.repository.BookRepository;
 import jp.co.who.spring_tutorial.api.jpa.bookmark.repository.CategorisedBookDataRepository;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CategorisedBookService {
+public class CategorisedBookServiceImpl implements CategorisedBookService {
 
     private final CategorisedBookDataRepository repository;
 
@@ -19,7 +20,7 @@ public class CategorisedBookService {
 
     private final BookCategoryRepository bookCategoryRepository;
 
-    CategorisedBookService(CategorisedBookDataRepository repository, BookRepository bookRepository, BookCategoryRepository bookCategoryRepository) {
+    CategorisedBookServiceImpl(CategorisedBookDataRepository repository, BookRepository bookRepository, BookCategoryRepository bookCategoryRepository) {
         this.repository = repository;
         this.bookRepository = bookRepository;
         this.bookCategoryRepository = bookCategoryRepository;
