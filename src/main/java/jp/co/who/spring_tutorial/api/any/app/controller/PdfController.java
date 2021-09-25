@@ -1,0 +1,45 @@
+package jp.co.who.spring_tutorial.api.any.app.controller;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+
+@Slf4j
+@RestController
+public class PdfController {
+
+    @GetMapping(path="/api/get/text", produces = MediaType.TEXT_PLAIN_VALUE)
+    public Resource download() {
+        var hoge = new File("src/main/resources/application.properties");
+        log.debug(hoge.toString());
+        return new FileSystemResource(hoge);
+    }
+
+    @GetMapping(path="/api/get/png", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public Resource download1() {
+        var hoge = new File("src/main/resources/screenshot1.png");
+        log.debug(hoge.toString());
+        return new FileSystemResource(hoge);
+    }
+
+    @GetMapping(path="/api/get/png2")
+    public void download2(HttpServletResponse response) throws Exception {
+        var hoge = new FileInputStream("src/main/resources/screenshot1.png");
+        OutputStream os = response.getOutputStream();
+        log.debug(hoge.toString());
+        response.setHeader("Content-Disposition", "attachment; filename=sample.png");
+        response.setContentType("application/octet-stream");
+
+        IOUtils.copy(hoge, os);
+        os.flush();
+    }
+}
