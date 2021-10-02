@@ -64,9 +64,9 @@ dependencies {
 
     // mockito-inline(static mock)
     testImplementation 'org.junit.platform:junit-platform-launcher:1.6.0'
-    testImplementation 'org.mockito:mockito-core:3.9.0'
-    testImplementation 'org.mockito:mockito-inline:3.9.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:3.9.0'
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'org.mockito:mockito-inline:3.12.4'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.12.4'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     // log
