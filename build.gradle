@@ -73,7 +73,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     // log
-    implementation "ch.qos.logback:logback-classic:1.2.6"
+    implementation "ch.qos.logback:logback-classic:1.2.7"
 
     implementation 'mysql:mysql-connector-java:8.0.27'
 
