@@ -42,6 +42,14 @@ JUnit5 を用いた単体テストを実行します
 ./gradlew test
 ```
 
+## format
+
+spotless を使ったオートフォーマット  
+gradle plugin の spotless を適用しているので、コマンドから自動でする
+```bash
+./gradlew spotlessApply
+```
+
 ## 実装選択の意図  
 
 後から見返す用
