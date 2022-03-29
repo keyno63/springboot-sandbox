@@ -12,8 +12,8 @@ ext['logback.version'] = '1.2.9'
 
 group = 'jp.co.who'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
-targetCompatibility = '17'
+sourceCompatibility = '18'
+targetCompatibility = '18'
 //sourceCompatibility = '16'
 //targetCompatibility = '16'
 
