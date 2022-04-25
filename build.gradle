@@ -79,7 +79,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-junit-jupiter:4.5.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
-    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'mysql:mysql-connector-java:8.0.29'
 
     implementation 'com.google.guava:guava:31.1-jre'
 }
