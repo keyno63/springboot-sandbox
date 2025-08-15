@@ -75,9 +75,9 @@ dependencies {
 
     // mockito-inline(static mock)
     testImplementation 'org.junit.platform:junit-platform-launcher:1.12.0'
-    testImplementation 'org.mockito:mockito-core:5.15.2'
+    testImplementation 'org.mockito:mockito-core:5.19.0'
     testImplementation 'org.mockito:mockito-inline:5.2.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.15.2'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.19.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     implementation 'mysql:mysql-connector-java:8.0.33'
